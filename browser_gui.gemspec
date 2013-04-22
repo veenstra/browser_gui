@@ -3,9 +3,9 @@ require File.expand_path('../lib/browser_gui/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Jack Veenstra"]
-  gem.email         = ["jack@ooyala.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.email         = ["veenstra@gmail.com"]
+  gem.description   = %q{Use with Sinatra to create command-line scripts that open the browser as a GUI.}
+  gem.summary       = %q{Use the browser as a GUI.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
