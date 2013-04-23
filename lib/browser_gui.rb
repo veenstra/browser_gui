@@ -8,11 +8,11 @@ end
 module BrowserGui
   def self.open_browser(url)
     if RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/ then
-      system("start #{url}")
+      system("start '#{url}'")
     elsif RbConfig::CONFIG['host_os'] =~ /darwin/ then
-      system("open #{url}")
+      system("open '#{url}'")
     elsif RbConfig::CONFIG['host_os'] =~ /linux/ then
-      system("xdg-open #{url}")
+      system("xdg-open '#{url}'")
     end
   end
 end

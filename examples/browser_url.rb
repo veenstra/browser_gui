@@ -4,7 +4,7 @@ require "sinatra"
 require "browser_gui"
 
 # Change the URL that the browser opens to /hello and add a parameter.
-set :browser_url, "/hello?world=1"
+set :browser_url, "/hello?world=1&foo=bar"
 
 get "/hello" do
   "params: #{params.inspect}"
