@@ -19,4 +19,8 @@ end
 
 # Sinatra uses an "at_exit" block to start the server, so we have to use
 # an "at_exit" block to open the browser.
-at_exit { BrowserGui.open_browser("http://localhost:#{settings.port}/") }
+at_exit {
+  browser_url = settings.respond_to?(:browser_url) ? settings.browser_url : "/"
+  browser_host = settings.respond_to?(:browser_host) ? settings.browser_host : "localhost"
+  BrowserGui.open_browser("http://#{browser_host}:#{settings.port}#{browser_url}")
+}

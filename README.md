@@ -114,3 +114,24 @@ You can still pass arguments to Sinatra (such as setting the port number), like 
 The double dash `--` stops the option processing in the script and passes the
 remaining options to Sinatra.  The `-t` option is parsed by the script and the
 `-p` option is parsed by Sinatra.
+
+## Changing the initial URL that the browser opens
+
+By default, the browser opens the URL `http://localhost:<port>/` where `<port>`
+is the Sinatra port (4567 by default, but you can change that with the `-p port`
+option). You can add parameters to the URL or change the URL to something else
+by setting the `browser_url` variable, as in the following example.
+
+```
+#!/usr/bin/env ruby
+
+require "sinatra"
+require "browser_gui"
+
+# Change the URL that the browser opens to /hello and add a parameter.
+set :browser_url, "/hello?world=1"
+
+get "/hello" do
+  "params: #{params.inspect}"
+end
+```
