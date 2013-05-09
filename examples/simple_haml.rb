@@ -17,7 +17,6 @@ HAML =<<EOF
     %li
       %a{ :href => href }
         = (i == 1) ? "Click me!" : "No, click me!"
-      %br/
 EOF
 
 get "/" do
