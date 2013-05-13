@@ -7,13 +7,15 @@ end
 
 module BrowserGui
   def self.open_browser(url)
-    if RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/ then
-      system("start '#{url}'")
-    elsif RbConfig::CONFIG['host_os'] =~ /darwin/ then
-      system("open '#{url}'")
-    elsif RbConfig::CONFIG['host_os'] =~ /linux/ then
-      system("xdg-open '#{url}'")
+    command = case RbConfig::CONFIG['host_os']
+      when /mswin|mingw|cygwin/ then "start '#{url}'"
+      when /darwin/ then "open '#{url}'"
+      when /linux/ then "xdg-open '#{url}'"
     end
+    # Spawn a process and return without waiting for it. Sleep 1 second to give Sinatra time to start up.
+    command = "sleep 1; #{command}"
+    pid = spawn(command)
+    Process.detach(pid)
   end
 end
 
